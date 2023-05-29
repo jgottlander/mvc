@@ -1,9 +1,95 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto&display=swap");
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
 body {
-    background-color: lightgray;
+    background-color: rgba(0, 212, 255, 1);
+}
+
+header {
+    background: linear-gradient(0deg, rgba(0, 212, 255, 1) 0%, rgba(9, 9, 121, 1) 100%);
+    h1 {
+        font-family: Roboto, sant-serif;
+        margin: 0;
+        padding: 1em;
+    }
+}
+
+nav {
+    font-family: Roboto, sant-serif;
+    background: white;
+    color: black;
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        display: inline-block;
+        font-size: 1.5rem;
+        padding: 1em;
+    }
+
+    a {
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+main {
+    width: 80em;
+    min-height: 24em;
+    margin: 0 auto;
+}
+
+footer {
+    background: rgba(9, 9, 121, 1);
+    color: white;
+    text-align: center;
+    padding: 2em 0;
+    height: 8em;
+    margin-top: 8em;
+
+    * {
+        padding: 1em;
+    }
+
+    a:visited {
+        color: white;
+    }
+}
+
+.about {
+    width: calc(100% * 3 / 4);
 }
 
 .lucky {
     background-color: lightgoldenrodyellow;
     color: red;
     text-align: center;
+    height: 20em;
+
+    h1 {
+        padding: 5em;
+    }
+}
+
+.home-content {
+    display: flex;
+
+    div {
+        width: calc(100% * 2 / 3);
+    }
+}
+
+.col2 {
+    display: flex;
 }
