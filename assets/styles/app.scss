@@ -75,10 +75,17 @@ footer {
     background-color: lightgoldenrodyellow;
     color: red;
     text-align: center;
-    height: 20em;
+    min-height: 20em;
 
     h1 {
-        padding: 5em;
+        padding: 2em;
+        animation: blinker 1s linear infinite;
+    }
+}
+
+@keyframes blinker {
+    50% {
+        opacity: 0;
     }
 }
 

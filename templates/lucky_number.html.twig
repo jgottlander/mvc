@@ -1,12 +1,26 @@
 {% extends "base.html.twig" %}
 
-{% block title %}Stortån
+{% block title %}
+	Miljonär
 {% endblock %}
 
 {% block body %}
 	<div class="lucky">
-		<h1>Du kommer att slå i storstån
+		<h1>Grattis!!! Du har vunnit
 			{{ number }}
-			gånger idag!</h1>
+			miljoner kronor!!!</h1>
+
+		<p>Ange dina kreditkortupplysningar, så överför vi pengarna inom 3 bankdagar.</p>
+		<form>
+			<label>Ange ditt namn:</label>
+			<input type="text" placeholder="Ange ditt namn"><br>
+			<label>Ange kreditkortnummer:</label>
+			<input type="text" placeholder="Ange kreditkortsnummer"><br>
+			<label>Utgångsdatum:</label>
+			<input type="text" placeholder="MM" size="2" maxlength="2">
+			/
+			<input type="text" placeholder="YY" size="2" maxlength="2"><br>
+			<input type="submit" value="Skicka">
+		</form>
 	</div>
 {% endblock %}
