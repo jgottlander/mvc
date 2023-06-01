@@ -44,14 +44,14 @@ class MyController extends AbstractController
     public function quote(): Response
     {
         $quotes = array(
-            "The surest way to become Tense, Awkward, and Confused is to develop a mind that tries too hard " .
-            "- one that thinks too much.",
+            "The surest way to become Tense, Awkward, and Confused is to develop a mind that tries too hard"
+            . " - one that thinks too much.",
             "Do you really want to be happy? You can begin by being appreciative of who you are and what you've got.",
-            "When you know and respect your Inner Nature, you know where you belong. " .
-            "You also know where you don't belong.",
-            "When you discard arrogance, complexity, and a few other things that get in the way, " .
-            "sooner or later you will discover that simple, childlike, " .
-            "and mysterious secret known to those of the Uncarved Block: Life is Fun.",
+            "When you know and respect your Inner Nature, you know where you belong."
+            . " You also know where you don't belong.",
+            "When you discard arrogance, complexity, and a few other things that get in the way,"
+            . " sooner or later you will discover that simple, childlike,"
+            . " and mysterious secret known to those of the Uncarved Block: Life is Fun.",
             "We simply need to believe in the power that's within us, and use it."
         );
 
