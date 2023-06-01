@@ -15,9 +15,41 @@
 		<!-- Redovisningstext för kmom -->
 		<section>
 			<h2 id="kmom01">Kmom01</h2>
-			<p>
-				Redovisningstext
-			</p>
+			<p>Jag har en del kunskaper om objektorienterad programmering (OOP) sedan tidigare. Har hållit på lite med C++ men mest med Java. Sedan har vi ju också python som vi hade i oopython-kursen tidigare, men python gör på sitt eget sätt och känns mycket friare. Jag har ännu inte gjort färdig kursen så har inte kommit så långt med just OOP i python, men jag känner till grunderna från andra språk.</p>
+			<p>Objektorienterad programmering i PHP funkar i stort sett som det gör i andra programmeringsspråk C++/Java. Man definierar en klass med eventuella värden och metoder som man sedan kan skapa ett objekt från. Objekt går att ändra efter skapande, s.k. mutable. Det går att skapa flera objekt från samma klass som alla blir individuella med sina egna värden.
+				Man kan även definiera en konstruktor i en klass som initierar eventuella startvariabler och liknande. Detta görs genom att skapa en metod i klassen med namn __constructor(), den anropas sedan automatiskt när man skapar ett nytt objekt från klassen med new.
+				Man kan definiera en klass värden och metoder som private, protected, eller public, beroende på vem som skall ha åtkomst till dem. Private kan endast nås inom klassen, protected kan nås av en underklass, och public kan nås överallt.</p>
+			<p>Kodbasen känns gigantisk för Symfony med allting inkluderat. Nu när kmom01 är färdig, med både composer- samt npm-packet installerade så upptar hela reportmappen 127 Mb. Där själva koden till sidorna samt controllern endast tar några Kb. Jag har ingen aning om hur allting funkar, men det gör det som tur är. Och jag kan verkligen förstå att man har utvecklat pakethanterare som composer och npm för att hålla koll på allting, för det underlättar väldigt mycket.
+				Det viktigaste i slutändan är nog att man vet hur man använder det, och inte alltid hur det fungerar, även om det nog förståelsen ökar gradvis med användandet.</p>
+			<p>Nu har jag bara skummat igenom PHP The Right Way men hittade några intressanta bitar. Framförallt hur man optimerar kod, det behöver inte bara vara cpu/minnes-optimerat, men också platsoptimerat. Om man kan skriva samma kod med färre tecken samtidigt som det blir lika eller mer läsbart är det bara win-win. T.ex denna:</p>
+			<pre>
+				function test($a)
+				{
+					if ($a) {
+						return true;
+					} else {
+						return false;
+					}
+				}
+
+				// vs.
+
+				function test($a)
+				{
+					if ($a) {
+						return true;
+					}
+					return false;    // else is not necessary
+				}
+
+				// or even shorter:
+
+				function test($a)
+				{
+					return (bool) $a;
+				}
+			</pre>
+			<p>Mitt TIL är hur man använder Symfony och skapar controllers, även mer kunskap i twig, som vi också höll på med i designkursen.</p>
 		</section>
 		<section>
 			<h2 id="kmom02">Kmom02</h2>
