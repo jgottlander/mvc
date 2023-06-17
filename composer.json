@@ -1,4 +1,6 @@
 {
+    "name": "josef/mvc-report",
+    "description": "The report page for the MVC-course",
     "type": "project",
     "license": "proprietary",
     "minimum-stability": "stable",
@@ -72,6 +74,8 @@
         "symfony/polyfill-php81": "*"
     },
     "scripts": {
+        "csfix": "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src",
+        "csfix:dry": "tools/php-cs-fixer/vendor/bin/php-cs-fixer fix src --dry-run -v",
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
             "assets:install %PUBLIC_DIR%": "symfony-cmd"

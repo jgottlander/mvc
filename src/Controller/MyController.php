@@ -5,7 +5,6 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpKernel\HttpCache\ResponseCacheStrategy;
 use Symfony\Component\Routing\Annotation\Route;
 
 class MyController extends AbstractController
@@ -28,7 +27,7 @@ class MyController extends AbstractController
         return $this->render('report.html.twig');
     }
 
-    #[Route('/lucky', name: "big_toe")]
+    #[Route('/lucky', name: "lucky")]
     public function number(): Response
     {
         $number = random_int(2, 10);
