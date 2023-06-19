@@ -19,7 +19,6 @@ class CardGameController extends AbstractController
     public function testCardHand(): Response
     {
         $deck = new DeckOfCards;
-        $deck->generate();
 
         $data = [
             "deck" => $deck->getString()

@@ -10,7 +10,7 @@ class DeckOfCards
     protected $values = array("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K");
     private $deck = [];
 
-    public function generate(): void
+    public function __construct()
     {
         foreach ($this->colors as $color) {
             foreach ($this->values as $value) {
@@ -24,12 +24,12 @@ class DeckOfCards
         shuffle($this->deck);
     }
 
-    public function deal($amount = 1)
+    public function deal($amount = 1): array
     {
         $cards = [];
 
         foreach (range(1, $amount) as $i) {
-            $cards[] = array_shift($this->deck);
+            $cards[] = array_shift($this->deck[]);
         }
         return $cards;
     }
