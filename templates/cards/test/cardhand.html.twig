@@ -1,8 +1,10 @@
 {% block main %}
-<h1>Deck test</h1>
-<ul>
-	{% for card in deck %}
-    <li>{{ card }}</li>
-    {% endfor %}
-</ul>
+	<h1>Hand test</h1>
+	<p>Number of cards:
+		{{num_cards}}</p>
+	<div>
+		{% for card in hand %}
+			<div>{{ card }}</div>
+		{% endfor %}
+	</div>
 {% endblock %}

@@ -6,8 +6,6 @@ class Card
 {
     protected $value;
     protected $color;
-    
-    protected $unicode;
 
     public function __construct($value, $color)
     {
@@ -22,6 +20,6 @@ class Card
 
     public function getAsString(): string
     {
-        return "{$this->value}{$this->color}";
+        return "[{$this->value}{$this->color}]";
     }
 }

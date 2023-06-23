@@ -13,13 +13,16 @@ class CardGraphic extends Card
         parent::__construct($value, $color);
     }
 
-    public function getObject(): string
+    public function getValue(): string
     {
-        return <<< CARD
-        <div class=\"card\">
-            <p>{$this->value}</p>
+        ob_start(); ?>
+        <div class="card">
+            <p>
+                <?php echo ($this->value) ?>
+            </p>
             <p>{$this->color}</p>
-        </div>
-        CARD;
+        </div>"
+        <?php
+        return ob_get_clean();
     }
 }
