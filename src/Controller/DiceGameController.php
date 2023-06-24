@@ -133,6 +133,7 @@ class DiceGameController extends AbstractController
         $roundTotal = $session->get("pig_round");
         $round = 0;
         $values = $hand->getValues();
+        
         foreach ($values as $value) {
             if ($value === 1) {
                 $round = 0;

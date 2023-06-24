@@ -18,14 +18,9 @@ class DeckOfCards
         shuffle($this->deck);
     }
 
-    public function draw($amount = 1): array
+    public function draw(): Card
     {
-        $cards = [];
-
-        for ($i = 0; $i < $amount; $i++) {
-            $cards[] = array_shift($this->deck);
-        }
-        return $cards;
+        return array_shift($this->deck);
     }
 
     public function getNumberCards(): int

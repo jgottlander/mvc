@@ -74,10 +74,41 @@ class CardGameController extends AbstractController
     ): Response {
         $deck = $session->get("deck");
 
+        if ($deck->getNumberCards() < 1) {
+            throw new \Exception("Not enough cards in the deck");
+        }
+
         $hand = new CardHand();
 
-        foreach ($deck->draw() as $card) {
-            $hand->add($card);
+        $hand->add($deck->draw());
+
+        $session->set("deck", $deck);
+
+        $data = [
+            "num_cards" => $deck->getNumberCards(),
+            "deck" => $deck->getString(),
+            "hand" => $hand->getString()
+        ];
+
+        return $this->render("cards/draw.html.twig", $data);
+    }
+
+    #[Route("/card/deck/draw/{num<\d+>}", name: "card_deck_draw_num")]
+    public function deckDrawNum(
+        int $num,
+        SessionInterface $session
+    ): Response {
+        $deck = $session->get("deck");
+        $num_cards = $deck->getNumberCards();
+
+        if ($num > $num_cards) {
+            throw new \Exception("Cannot draw more than {$num_cards} cards");
+        }
+
+        $hand = new CardHand();
+
+        for ($i = 0; $i < $num; $i++) {
+            $hand->add($deck->draw());
         }
 
         $session->set("deck", $deck);

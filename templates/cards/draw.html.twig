@@ -3,16 +3,16 @@
 {% block body %}
 	<h1>Draw from deck</h1>
     <h3>Drawn cards</h3>
-	<ul>
+	<ol>
 		{% for card in hand %}
 			<li>{{ card }}</li>
 		{% endfor %}
-	</ul>
+	</ol>
     <h3>Deck</h3>
     <p>Decksize: {{ num_cards }}</p>
-	<ul>
+	<ol>
 		{% for card in deck %}
 			<li>{{ card }}</li>
 		{% endfor %}
-	</ul>
+	</ol>
 {% endblock %}

@@ -3,9 +3,9 @@
 {% block body %}
 	<h1>Deck</h1>
 	<p>Decksize: {{ num_cards }}</p>
-	<ul>
+	<ol>
 		{% for card in deck %}
 			<li>{{ card }}</li>
 		{% endfor %}
-	</ul>
+	</ol>
 {% endblock %}
