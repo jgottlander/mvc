@@ -136,7 +136,7 @@ class CardGameController extends AbstractController
     #[Route('/card/test/card_deck', name: "test_card_deck")]
     public function testCardDeck(): Response
     {
-        $deck = new DeckOfCards;
+        $deck = new DeckOfCards();
 
         $data = [
             "num_cards" => $deck->getNumberCards(),

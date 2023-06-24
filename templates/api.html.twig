@@ -1,0 +1,14 @@
+{% extends "base.html.twig" %}
+
+{% block title %}API
+{% endblock %}
+
+{% block body %}
+	<h1>API</h1>
+	<h3>Available API:s</h3>
+	<ul>
+		<li>
+			<a href="{{ path("api_quote") }}">/api/quote</li>
+		</li>
+	</ul>
+{% endblock %}

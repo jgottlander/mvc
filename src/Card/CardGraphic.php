@@ -18,7 +18,7 @@ class CardGraphic extends Card
         ob_start(); ?>
         <div class="card">
             <p>
-                <?php echo ($this->value) ?>
+                <?php echo($this->value) ?>
             </p>
             <p>{$this->color}</p>
         </div>"
