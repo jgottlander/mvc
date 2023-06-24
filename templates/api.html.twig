@@ -7,7 +7,16 @@
 	<h1>API</h1>
 	<h3>Available API:s</h3>
 	<ul>
-		<li><a href="{{ path("api_quote") }}">/api/quote</a></li>
-		<li><a href="{{ path("api_deck") }}">/api/deck</a></li>
+		<li>
+			<a href="{{ path("api_quote") }}">/api/quote</a>
+		</li>
+		<li>
+			<a href="{{ path("api_deck") }}">/api/deck</a>
+		</li>
 	</ul>
+	<form method="post" action="">
+		<p>
+			<input type="submit" name="shuffle" value="Shuffle" onclick="this.form.action='{{ path('api_deck_shuffle') }}';">
+		</p>
+	</form>
 {% endblock %}

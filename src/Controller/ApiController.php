@@ -49,8 +49,14 @@ class ApiController extends AbstractController
     public function apiDeck(
         SessionInterface $session
     ): Response {
-        $deck = new DeckOfCards;
-        $session->set("deck", $deck);
+        $deck = [];
+
+        if ($session->has("deck")) {
+            $deck = $session->get("deck");
+        } else {
+            $deck = new DeckOfCards();
+            $session->set("deck", $deck);
+        }
 
         foreach ($deck->getString() as $card) {
             $response[] = $card;
@@ -62,5 +68,18 @@ class ApiController extends AbstractController
         );
 
         return $response;
+    }
+
+    #[Route("/api/deck/shuffle", name: "api_deck_shuffle", methods: ["POST"])]
+    public function apiDeckShuffle(
+        SessionInterface $session
+    ): Response {
+        $deck = $session->get("deck");
+
+        $deck->shuffle();
+
+        $session->set("deck", $deck);
+
+        return $this->redirectToRoute('api_deck');
     }
 }
