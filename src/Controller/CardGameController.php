@@ -13,9 +13,6 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class CardGameController extends AbstractController
 {
-    private $colors = array("♠", "♥", "♦", "♣");
-    private $values = array("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K");
-
     #[Route('/card', name: "card_home")]
     public function home(): Response
     {
@@ -31,7 +28,7 @@ class CardGameController extends AbstractController
         if ($session->has("deck")) {
             $deck = $session->get("deck");
         } else {
-            $deck = $this->generateDeck();
+            $deck = new DeckOfCards();
             $session->set("deck", $deck);
         }
 
@@ -43,24 +40,11 @@ class CardGameController extends AbstractController
         return $this->render("cards/deck.html.twig", $data);
     }
 
-    private function generateDeck()
-    {
-        $deck = new DeckOfCards();
-
-        foreach ($this->colors as $color) {
-            foreach ($this->values as $value) {
-                $deck->add(new Card($value, $color));
-            }
-        }
-
-        return $deck;
-    }
-
     #[Route("/card/deck/shuffle", name: "card_deck_shuffle")]
     public function deckShuffle(
         SessionInterface $session
     ): Response {
-        $deck = $this->generateDeck();
+        $deck = new DeckOfCards();
 
         $deck->shuffle();
         $session->set("deck", $deck);
@@ -144,26 +128,5 @@ class CardGameController extends AbstractController
         ];
 
         return $this->render("cards/test/carddeck.html.twig", $data);
-    }
-
-    #[Route("/card/test/card_hand", name: "test_card_hand")]
-    public function testCardHand(): Response
-    {
-        $hand = new CardHand();
-
-        for ($i = 0; $i < 5; $i++) {
-            if ($i % 2 === 1) {
-                $hand->add(new CardGraphic(array_rand($this->values), array_rand($this->colors)));
-            } else {
-                $hand->add(new Card(array_rand($this->values), array_rand($this->colors)));
-            }
-        }
-
-        $data = [
-            "num_cards" => $hand->getNumberCards(),
-            "hand" => $hand->getValues()
-        ];
-
-        return $this->render("cards/test/cardhand.html.twig", $data);
     }
 }

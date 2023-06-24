@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Card\DeckOfCards;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -35,6 +36,23 @@ class ApiController extends AbstractController
             "date" => date("Y-m-d"),
             "time" => date("H:i:s")
         ];
+        $response = new JsonResponse($response);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+
+        return $response;
+    }
+
+    #[Route("/api/deck", name: "api_deck", methods: ["GET"])]
+    public function apiDeck(): Response
+    {
+        $deck = new DeckOfCards;
+
+        foreach ($deck->getString() as $card) {
+            $response[] = $card;
+        }
+
         $response = new JsonResponse($response);
         $response->setEncodingOptions(
             $response->getEncodingOptions() | JSON_PRETTY_PRINT
