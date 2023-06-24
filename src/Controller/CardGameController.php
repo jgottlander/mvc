@@ -111,8 +111,6 @@ class CardGameController extends AbstractController
         SessionInterface $session
     ): Response {
         $session->remove("deck");
-        $session->remove("card_deck");
-        $session->remove("hand");
 
         return $this->redirectToRoute('card_home');
     }

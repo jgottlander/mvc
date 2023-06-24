@@ -6,6 +6,7 @@ use App\Card\DeckOfCards;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class ApiController extends AbstractController
@@ -45,9 +46,11 @@ class ApiController extends AbstractController
     }
 
     #[Route("/api/deck", name: "api_deck", methods: ["GET"])]
-    public function apiDeck(): Response
-    {
+    public function apiDeck(
+        SessionInterface $session
+    ): Response {
         $deck = new DeckOfCards;
+        $session->set("deck", $deck);
 
         foreach ($deck->getString() as $card) {
             $response[] = $card;
