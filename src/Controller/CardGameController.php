@@ -31,13 +31,7 @@ class CardGameController extends AbstractController
         if ($session->has("deck")) {
             $deck = $session->get("deck");
         } else {
-            $deck = new DeckOfCards();
-
-            foreach ($this->colors as $color) {
-                foreach ($this->values as $value) {
-                    $deck->add(new Card($value, $color));
-                }
-            }
+            $deck = $this->generateDeck();
             $session->set("deck", $deck);
         }
 
@@ -49,11 +43,24 @@ class CardGameController extends AbstractController
         return $this->render("cards/deck.html.twig", $data);
     }
 
+    private function generateDeck()
+    {
+        $deck = new DeckOfCards();
+
+        foreach ($this->colors as $color) {
+            foreach ($this->values as $value) {
+                $deck->add(new Card($value, $color));
+            }
+        }
+
+        return $deck;
+    }
+
     #[Route("/card/deck/shuffle", name: "card_deck_shuffle")]
     public function deckShuffle(
         SessionInterface $session
     ): Response {
-        $deck = $session->get("deck");
+        $deck = $this->generateDeck();
 
         $deck->shuffle();
         $session->set("deck", $deck);
@@ -66,14 +73,8 @@ class CardGameController extends AbstractController
         SessionInterface $session
     ): Response {
         $deck = $session->get("deck");
-        $hand = [];
 
-        if ($session->has("hand")) {
-            $hand = $session->get("hand");
-        } else {
-            $hand = new CardHand();
-            $session->set("hand", $hand);
-        }
+        $hand = new CardHand();
 
         foreach ($deck->draw() as $card) {
             $hand->add($card);
