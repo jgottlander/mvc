@@ -33,7 +33,7 @@ class CardGameController extends AbstractController
         }
 
         $data = [
-            "num_cards" => $deck->getNumberCards(),
+            "deck_size" => $deck->getNumberCards(),
             "deck" => $deck->getString()
         ];
 
@@ -69,9 +69,9 @@ class CardGameController extends AbstractController
         $session->set("deck", $deck);
 
         $data = [
-            "num_cards" => $deck->getNumberCards(),
-            "deck" => $deck->getString(),
-            "hand" => $hand->getString()
+            "hand" => $hand->getString(),
+            "deck_size" => $deck->getNumberCards(),
+            "deck" => $deck->getString()
         ];
 
         return $this->render("cards/draw.html.twig", $data);
@@ -98,9 +98,9 @@ class CardGameController extends AbstractController
         $session->set("deck", $deck);
 
         $data = [
-            "num_cards" => $deck->getNumberCards(),
-            "deck" => $deck->getString(),
-            "hand" => $hand->getString()
+            "hand" => $hand->getString(),
+            "deck_size" => $deck->getNumberCards(),
+            "deck" => $deck->getString()
         ];
 
         return $this->render("cards/draw.html.twig", $data);
@@ -121,7 +121,7 @@ class CardGameController extends AbstractController
         $deck = new DeckOfCards();
 
         $data = [
-            "num_cards" => $deck->getNumberCards(),
+            "deck_size" => $deck->getNumberCards(),
             "deck" => $deck->getString()
         ];
 

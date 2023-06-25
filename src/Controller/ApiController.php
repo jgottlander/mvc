@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Card\CardHand;
 use App\Card\DeckOfCards;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
@@ -50,6 +52,7 @@ class ApiController extends AbstractController
         SessionInterface $session
     ): Response {
         $deck = [];
+        $response = [];
 
         if ($session->has("deck")) {
             $deck = $session->get("deck");
@@ -81,5 +84,45 @@ class ApiController extends AbstractController
         $session->set("deck", $deck);
 
         return $this->redirectToRoute('api_deck');
+    }
+
+    #[Route("/api/deck/draw", name: "api_deck_draw", methods: ["POST"])]
+    public function apiDeckDrawNum(
+        Request $request,
+        SessionInterface $session
+    ): Response {
+        if ($request->request->has("num_cards")) {
+            $num_cards = $request->request->get("num_cards");
+        } else {
+            $num_cards = 1;
+        }
+
+        $deck = $session->get("deck");
+        $deck_size = $deck->getNumberCards();
+
+        if ($num_cards > $deck_size) {
+            throw new \Exception("Cannot draw more than {$num_cards} cards");
+        }
+
+        $hand = new CardHand();
+
+        for ($i = 0; $i < $num_cards; $i++) {
+            $hand->add($deck->draw());
+        }
+
+        $session->set("deck", $deck);
+
+        $response = [
+            "hand" => $hand->getString(),            
+            "deck_size" => $deck->getNumberCards(),
+            "deck" => $deck->getString()
+        ];
+
+        $response = new JsonResponse($response);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+
+        return $response;
     }
 }

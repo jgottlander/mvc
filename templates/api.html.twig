@@ -6,6 +6,7 @@
 {% block body %}
 	<h1>API</h1>
 	<h3>Available API:s</h3>
+
 	<p>/api/quote:</p>
 	<form method="get" action="">
 		<input type="submit" name="quote" value="quote" onclick="this.form.action='{{ path('api_quote') }}';">
@@ -15,9 +16,20 @@
 	<form method="get" action="">
 		<input type="submit" name="deck" value="deck" onclick="this.form.action='{{ path('api_deck') }}';">
 	</form>
-	
+
 	<p>/api/deck/shuffle:</p>
 	<form method="post" action="">
 		<input type="submit" name="shuffle" value="Shuffle" onclick="this.form.action='{{ path('api_deck_shuffle') }}';">
+	</form>
+
+	<p>/api/deck/draw:</p>
+	<form method="post" action="">
+		<input type="submit" name="draw" value="Draw" onclick="this.form.action='{{ path('api_deck_draw') }}';">
+	</form>
+
+	<p>/api/deck/draw/{num}:</p>
+	<form method="post" action="">
+		<input type="number" name="num_cards" min="1" max="52" value="1">
+		<input type="submit" name="draw" value="Draw" onclick="this.form.action='{{ path('api_deck_draw') }}';">
 	</form>
 {% endblock %}
