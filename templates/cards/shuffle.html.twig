@@ -1,0 +1,11 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<h1>Shuffled deck:</h1>
+	<p>Decksize: {{ deck_size }}</p>
+	<ol>
+		{% for card in deck %}
+			<li>{{ card }}</li>
+		{% endfor %}
+	</ol>
+{% endblock %}

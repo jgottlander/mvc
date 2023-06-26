@@ -51,15 +51,10 @@ class ApiController extends AbstractController
     public function apiDeck(
         SessionInterface $session
     ): Response {
-        $deck = [];
+        $deck = new DeckOfCards();
         $response = [];
 
-        if ($session->has("deck")) {
-            $deck = $session->get("deck");
-        } else {
-            $deck = new DeckOfCards();
-            $session->set("deck", $deck);
-        }
+        $session->set("deck", $deck);
 
         foreach ($deck->getString() as $card) {
             $response[] = $card;
@@ -83,7 +78,16 @@ class ApiController extends AbstractController
 
         $session->set("deck", $deck);
 
-        return $this->redirectToRoute('api_deck');
+        foreach ($deck->getString() as $card) {
+            $response[] = $card;
+        }
+
+        $response = new JsonResponse($response);
+        $response->setEncodingOptions(
+            $response->getEncodingOptions() | JSON_PRETTY_PRINT
+        );
+
+        return $response;
     }
 
     #[Route("/api/deck/draw", name: "api_deck_draw", methods: ["POST"])]
@@ -113,7 +117,7 @@ class ApiController extends AbstractController
         $session->set("deck", $deck);
 
         $response = [
-            "hand" => $hand->getString(),            
+            "hand" => $hand->getString(),
             "deck_size" => $deck->getNumberCards(),
             "deck" => $deck->getString()
         ];
