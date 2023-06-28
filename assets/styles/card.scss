@@ -1,4 +1,23 @@
 .card {
-    width: "56px";
-    height: "87px"; 
+    position: relative;
+    width: 56px;
+    height: 87px;
+    border: 1px solid black;
+    border-radius: 5px;
+
+    .card-value {
+        position: absolute;
+        margin: 0px;
+        padding: 0px;
+        top: 2px;
+        left: 2px;
+    }
+
+    .card-color {
+        position: relative;
+        padding: 0px;
+        margin: 0px;
+        top: 16px;
+        left: 0px;
+    }
 }

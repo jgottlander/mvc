@@ -126,4 +126,20 @@ class CardGameController extends AbstractController
 
         return $this->render("cards/test/carddeck.html.twig", $data);
     }
+
+    #[Route("/card/test/card", name: "test_card")]
+    public function testCardHand(): Response
+    {
+        $hand = new CardHand();
+
+        $hand->add(new CardGraphic("A", "♠"));
+        $hand->add(new CardGraphic("K", "♠"));
+        $hand->add(new CardGraphic("Q", "♠"));
+
+        $data = [
+            "hand" => $hand->getString()
+        ];
+
+        return $this->render("cards/test/card.html.twig", $data);
+    }
 }

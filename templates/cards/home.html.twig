@@ -5,19 +5,21 @@
 {% endblock %}
 
 {% block body %}
-	<div class="card">
-		<h1>Card game</h1>
+	<h1>Card game</h1>
 
-		<p>Different links:</p>
+	<p>Different links:</p>
+	<ul>
+		<li>
+			<a href="{{ path("card_deck") }}">Deck</a>
+		</li>
+		<li>
+			<a href="{{ path("card_deck_shuffle") }}">Shuffle</a>
+		</li>
+		<li>Draw:</li>
 		<ul>
-			<li><a href="{{ path("card_deck") }}">Deck</a></li>
-			<li><a href="{{ path("card_deck_shuffle") }}">Shuffle</a></li>
-			<li>Draw:</li>
-			<ul>
-				<li><a href="{{ path("card_deck_draw") }}">Draw</a></li>
-				<li><a href="card/deck/draw/5">Draw 5</a></li>
-				<li><a href="card/deck/draw/10">Draw 10</a></li>
-			</ul>
+			<li><ahref="{{ path("card_deck_draw") }}">Draw</a></li>
+			<li><a href="card/deck/draw/5">Draw 5</a></li>
+			<li><a href="card/deck/draw/10">Draw 10</a></li>
 		</ul>
-	</div>
+	</ul>
 {% endblock %}
