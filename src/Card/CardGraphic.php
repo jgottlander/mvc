@@ -4,9 +4,6 @@ namespace App\Card;
 
 class CardGraphic extends Card
 {
-    protected $value;
-    protected $color;
-
     public function __construct($value, $color)
     {
         parent::__construct($value, $color);

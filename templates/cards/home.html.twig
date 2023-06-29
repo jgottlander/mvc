@@ -7,6 +7,20 @@
 {% block body %}
 	<h1>Card game</h1>
 
+	<div class="flex">
+		<div>
+			<article>Jag har skapat Card, CardGraphic, CardHand och DeckOfCards.
+				CardHand och DeckOfCards består av objekt av klassen Card. CardGraphic ärver av Card.
+				Card och CardGraphic behöver valör och färg för att skapas.<br>
+				För CardHand lägger man till objekt av klassen Card eller CardGraphic.<br>
+				DeckOfCards har en metod som genererar en helt kortlek med 52 kort.
+				Den anropas genom konstruktorn när man skapar ett nytt objekt av typen DeckOfCards.
+			</article>
+		</div>
+		<div><img src="{{ asset("img/uml.png") }}"/></div>
+	</div>
+
+
 	<p>Different links:</p>
 	<ul>
 		<li>
@@ -17,7 +31,7 @@
 		</li>
 		<li>Draw:</li>
 		<ul>
-			<li><ahref="{{ path("card_deck_draw") }}">Draw</a></li>
+			<li><ahref="{{path("card_deck_draw")}}">Draw</a></li>
 			<li><a href="card/deck/draw/5">Draw 5</a></li>
 			<li><a href="card/deck/draw/10">Draw 10</a></li>
 		</ul>

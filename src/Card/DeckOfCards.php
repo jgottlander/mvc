@@ -7,8 +7,8 @@ use phpDocumentor\Reflection\Types\Void_;
 
 class DeckOfCards
 {
-    private $colors = array("♠", "♥", "♦", "♣");
     private $values = array("A", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K");
+    private $colors = array("♠", "♥", "♦", "♣");
     private $deck = [];
 
     public function __construct()
