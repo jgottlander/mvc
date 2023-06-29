@@ -16,24 +16,24 @@
 				DeckOfCards har en metod som genererar en helt kortlek med 52 kort.
 				Den anropas genom konstruktorn när man skapar ett nytt objekt av typen DeckOfCards.
 			</article>
+			<p>Länkar:</p>
+			<ul>
+				<li>
+					<a href="{{ path("card_deck") }}">Deck</a>
+				</li>
+				<li>
+					<a href="{{ path("card_deck_shuffle") }}">Shuffle</a>
+				</li>
+				<li>Draw:</li>
+				<ul>
+					<li><ahref="{{path("card_deck_draw")}}">Draw</a></li>
+					<li><a href="card/deck/draw/5">Draw 5</a></li>
+					<li><a href="card/deck/draw/10">Draw 10</a></li>
+				</ul>
+			</ul>
 		</div>
 		<div><img src="{{ asset("img/uml.png") }}"/></div>
 	</div>
 
 
-	<p>Different links:</p>
-	<ul>
-		<li>
-			<a href="{{ path("card_deck") }}">Deck</a>
-		</li>
-		<li>
-			<a href="{{ path("card_deck_shuffle") }}">Shuffle</a>
-		</li>
-		<li>Draw:</li>
-		<ul>
-			<li><ahref="{{path("card_deck_draw")}}">Draw</a></li>
-			<li><a href="card/deck/draw/5">Draw 5</a></li>
-			<li><a href="card/deck/draw/10">Draw 10</a></li>
-		</ul>
-	</ul>
 {% endblock %}
