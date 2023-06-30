@@ -17,10 +17,10 @@
 			<h2 id="kmom01">Kmom01</h2>
 			<p>Jag har en del kunskaper om objektorienterad programmering (OOP) sedan tidigare. Har hållit på lite med C++ men mest med Java. Sedan har vi ju också python som vi hade i oopython-kursen tidigare, men python gör på sitt eget sätt och känns mycket friare. Jag har ännu inte gjort färdig kursen så har inte kommit så långt med just OOP i python, men jag känner till grunderna från andra språk.</p>
 			<p>Objektorienterad programmering i PHP funkar i stort sett som det gör i andra programmeringsspråk C++/Java. Man definierar en klass med eventuella värden och metoder som man sedan kan skapa ett objekt från. Objekt går att ändra efter skapande, s.k. mutable. Det går att skapa flera objekt från samma klass som alla blir individuella med sina egna värden.
-				Man kan även definiera en konstruktor i en klass som initierar eventuella startvariabler och liknande. Detta görs genom att skapa en metod i klassen med namn __constructor(), den anropas sedan automatiskt när man skapar ett nytt objekt från klassen med new.
-				Man kan definiera en klass värden och metoder som private, protected, eller public, beroende på vem som skall ha åtkomst till dem. Private kan endast nås inom klassen, protected kan nås av en underklass, och public kan nås överallt.</p>
+														Man kan även definiera en konstruktor i en klass som initierar eventuella startvariabler och liknande. Detta görs genom att skapa en metod i klassen med namn __constructor(), den anropas sedan automatiskt när man skapar ett nytt objekt från klassen med new.
+														Man kan definiera en klass värden och metoder som private, protected, eller public, beroende på vem som skall ha åtkomst till dem. Private kan endast nås inom klassen, protected kan nås av en underklass, och public kan nås överallt.</p>
 			<p>Kodbasen känns gigantisk för Symfony med allting inkluderat. Nu när kmom01 är färdig, med både composer- samt npm-packet installerade så upptar hela reportmappen 127 Mb. Där själva koden till sidorna samt controllern endast tar några Kb. Jag har ingen aning om hur allting funkar, men det gör det som tur är. Och jag kan verkligen förstå att man har utvecklat pakethanterare som composer och npm för att hålla koll på allting, för det underlättar väldigt mycket.
-				Det viktigaste i slutändan är nog att man vet hur man använder det, och inte alltid hur det fungerar, även om det nog förståelsen ökar gradvis med användandet.</p>
+														Det viktigaste i slutändan är nog att man vet hur man använder det, och inte alltid hur det fungerar, även om det nog förståelsen ökar gradvis med användandet.</p>
 			<p>Nu har jag bara skummat igenom PHP The Right Way men hittade några intressanta bitar. Framförallt hur man optimerar kod, det behöver inte bara vara cpu/minnes-optimerat, men också platsoptimerat. Om man kan skriva samma kod med färre tecken samtidigt som det blir lika eller mer läsbart är det bara win-win. T.ex denna:</p>
 			<pre>
 				function test($a)
@@ -53,9 +53,18 @@
 		</section>
 		<section>
 			<h2 id="kmom02">Kmom02</h2>
-			<p>
-				Redovisningstext
-			</p>
+			<p>I PHP har man olika möjligheter för att hantera och återanvända kod, i klasser, metoder, mm.<br>
+				När en klass ärver av en annan klass, så kan den den använda samma metoder och även attribut, om de är satt som protected eller public. Det är ett bra sätt att återanvända kod om de olika klasserna påminner om varandra, t.ex. att en mer specificerad klass ärver av en mer generell.<br>
+				Composition är helt enkelt att en klass använder sig av objekt från en annan klass. T.ex. klassen Hand kan bestå av 5 st objekt av klassen finger. Objektet Hand har Fingrar.<br>
+				Ett interface är ingen klass i sig, utan snarare en beskrivning av en klass. Vad som skall finnas i klassen, vilka metoder som skall finnas. Om en klass implementerar ett Interface så vet man att den har de metoder som interfacet beskriver.<br>
+				Ett trait är bara en bit kod som går att lägga till i klasser. Om många klasser innehåller exakt samma kod, så kan man lägga den i en trait som sedan alla klasser använder.</p>
+			<p>Jag är rätt nöjd med implementeringen av kmom02. Det tog lite tid att komma in i det och få koll på alla delar, men det byggdes upp sakta men säkert.<br>
+				Jag skapade först Card, CardHand och DeckOfCards och fyllde dem med kod, samt testade lite. Rättade och lade till/tog bort funktioner längs vägen.<br>
+				CardGraphics kämpade jag en del med, och fick det inte helt att fungera i starten. Tänkte först att det bara var att returnera lite HTML-kod, men den visades bara som text på sidan. Men problem låg tydligen i Twig, och dess hantering av mallarna (templates). HTML-koden funkade om jag stängde av autoescape med
+				<code>autoescape false</code>.<br>
+				Jag försökte också implementera användning av unicode-tecknen för kortlekarna, men där fick jag felmeddelanden att det inte var riktiga unicode-tecken som användes. Det är möjligt att Twig står som skuld för detta också, men valde att lägga mer tid på att implementera alla obligatoriska kraven först.</p>
+			<p>Börjar förstå Symfony mer och mer, och förstår att det inkluderar många funktioner och möjligheter att skriva och hantera kod. Det är ett stort ramverk som är bra att kunna, och roligt att använda mer avancerade tekniker för att förstå hur MVC fungerar.</p>
+			<p>Mitt TIL är nog mer förståelse för Symfony, och även Twig. Det är mer avancerat än jag trodde i början. T.ex. att man kan använda loopar i mallarna. Det ger många fördelar med att hantera kod.</p>
 		</section>
 		<section>
 			<h2 id="kmom03">Kmom03</h2>
